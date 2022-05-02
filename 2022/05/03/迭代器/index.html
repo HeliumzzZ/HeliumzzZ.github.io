@@ -24,11 +24,11 @@
 <meta property="og:description" content="1. 什么是迭代迭代时访问集合元素的一种方式 例如 123456789101112nums &#x3D; [11, 22, 33]# 可以通过for循环将nums列表中的每个数据依次获取for num in nums:    print(num)name &#x3D; &quot;teacher&quot;for temp in name:    print(temp)  运行效果  2. 可迭代对象我们可以通俗地认">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/image-20190226201002936.png">
-<meta property="og:image" content="http://example.com/2022/05/03/%E8%BF%AD%E4%BB%A3%E5%99%A8/迭代器/2.png">
+<meta property="og:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/2.png">
 <meta property="og:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/3.png">
 <meta property="og:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/4.png">
 <meta property="article:published_time" content="2022-05-02T16:48:48.000Z">
-<meta property="article:modified_time" content="2022-05-02T17:41:57.435Z">
+<meta property="article:modified_time" content="2022-05-02T18:10:41.412Z">
 <meta property="article:author" content="陈泓宇">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="迭代器">
@@ -275,8 +275,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections.abc <span class="hljs-keyword">import</span> Iterator<br>nums = [<span class="hljs-number">11</span>,<span class="hljs-number">22</span>,<span class="hljs-number">33</span>,<span class="hljs-number">44</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(nums))<br>nums_iter = <span class="hljs-built_in">iter</span>(nums)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(nums_iter))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">isinstance</span>(nums,Iterator))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">isinstance</span>(nums_iter,Iterator))<br></code></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<img src="迭代器/2.png" srcset="/img/loading.gif" lazyload style="zoom:150%;" />
-
+<p><img src="/%E8%BF%AD%E4%BB%A3%E5%99%A8/2.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看到<code>list</code>是一个可迭代对象，但并不是一个迭代器，使用<code>iter</code>方法可以获取他的迭代器。</p>
 <h3 id="3-3-获取迭代器的数据"><a href="#3-3-获取迭代器的数据" class="headerlink" title="3.3 获取迭代器的数据"></a>3.3 获取迭代器的数据</h3><p>此时我们可以通过next方法获取迭代器数据</p>
 <p>测试代码如下：</p>
