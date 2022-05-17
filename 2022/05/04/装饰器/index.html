@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/HeliumzzZ/HeliumzzZ.github.io/img/favicon.png">
-  <link rel="icon" href="/HeliumzzZ/HeliumzzZ.github.io/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/HeliumzzZ/img/favicon.png">
+  <link rel="icon" href="/HeliumzzZ/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,18 +19,18 @@
     <meta name="description" content="写代码要遵循开放封闭原则，装饰器可以很好的完成这一效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="装饰器">
-<meta property="og:url" content="https://github.com/HeliumzzZ/HeliumzzZ.github.io/2022/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8/index.html">
+<meta property="og:url" content="https://github.com/HeliumzzZ/2022/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8/index.html">
 <meta property="og:site_name" content="春夏秋冬">
 <meta property="og:description" content="写代码要遵循开放封闭原则，装饰器可以很好的完成这一效果">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/HeliumzzZ/HeliumzzZ.github.io/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
+<meta property="og:image" content="https://github.com/HeliumzzZ/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
 <meta property="article:published_time" content="2022-05-03T18:40:21.000Z">
 <meta property="article:modified_time" content="2022-05-03T18:44:30.027Z">
 <meta property="article:author" content="陈泓宇">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="装饰器">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/HeliumzzZ/HeliumzzZ.github.io/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
+<meta name="twitter:image" content="https://github.com/HeliumzzZ/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
   
   
   <title>装饰器 - 春夏秋冬</title>
@@ -63,17 +63,17 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/HeliumzzZ/HeliumzzZ.github.io/css/main.css" />
+<link  rel="stylesheet" href="/HeliumzzZ/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"github.com","root":"/HeliumzzZ/HeliumzzZ.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"d7733d62e35f6db501ab3fd96c5d3329","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/HeliumzzZ/HeliumzzZ.github.io/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/HeliumzzZ/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"d7733d62e35f6db501ab3fd96c5d3329","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/HeliumzzZ/local-search.xml"};
   </script>
-  <script  src="/HeliumzzZ/HeliumzzZ.github.io/js/utils.js" ></script>
-  <script  src="/HeliumzzZ/HeliumzzZ.github.io/js/color-schema.js" ></script>
+  <script  src="/HeliumzzZ/js/utils.js" ></script>
+  <script  src="/HeliumzzZ/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 
@@ -81,7 +81,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/HeliumzzZ/HeliumzzZ.github.io/">
+    <a class="navbar-brand" href="/HeliumzzZ/">
       <strong>何时能毕业</strong>
     </a>
 
@@ -100,7 +100,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/HeliumzzZ/HeliumzzZ.github.io/">
+              <a class="nav-link" href="/HeliumzzZ/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -112,7 +112,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/HeliumzzZ/HeliumzzZ.github.io/archives/">
+              <a class="nav-link" href="/HeliumzzZ/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -124,7 +124,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/HeliumzzZ/HeliumzzZ.github.io/categories/">
+              <a class="nav-link" href="/HeliumzzZ/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -136,7 +136,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/HeliumzzZ/HeliumzzZ.github.io/tags/">
+              <a class="nav-link" href="/HeliumzzZ/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -148,7 +148,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/HeliumzzZ/HeliumzzZ.github.io/about/">
+              <a class="nav-link" href="/HeliumzzZ/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -174,7 +174,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/HeliumzzZ/HeliumzzZ.github.io/img/default.png') no-repeat center center;
+         style="background: url('/HeliumzzZ/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -245,7 +245,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_10w</span>():<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    计算100000以内的每个数的立方和</span><br><span class="hljs-string">    :return:</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    sum_ret = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">100001</span>):<br>        sum_ret += i ** <span class="hljs-number">3</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;10w以内的每个数的立方和为：&quot;</span>, sum_ret)<br><br><br>start_time = time.time()<br>calculate_10w()<br>stop_time = time.time()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;耗费总时长为:&quot;</span>, stop_time - start_time, <span class="hljs-string">&quot;（秒）&quot;</span>)<br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>运行效果如下：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/1.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/1.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>问题：</p>
 <blockquote>
 <p>如果现在需要对5个函数都要进行耗时统计，请问怎样实现？难道将上图中的15、17、19行 写5遍吗？</p>
@@ -265,7 +265,7 @@
 <p>函数名仅仅是个变量，只不过指向了定义的函数而已，所以才能通过 <code>函数名()</code>调用，如果 <code>函数名=xxx</code>被修改了，那么当在执行<code>函数名()</code>时，调用的就不是之前的那个函数了</p>
 <h3 id="2-2-闭包"><a href="#2-2-闭包" class="headerlink" title="2.2 闭包"></a>2.2 闭包</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">make_pencil</span>(<span class="hljs-params">color</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">write</span>(<span class="hljs-params">content</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;正在使用(%s)色，写：%s&quot;</span> % (color, content))<br><br>    <span class="hljs-keyword">return</span> write<br><br><br>black_pencil = make_pencil(<span class="hljs-string">&quot;黑&quot;</span>)<br>black_pencil(<span class="hljs-string">&quot;我是喝墨水长大的&quot;</span>)<br><br>red_pencil = make_pencil(<span class="hljs-string">&quot;红&quot;</span>)<br>red_pencil(<span class="hljs-string">&quot;这么巧，我也是，只不过是红墨水&quot;</span>)<br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/2.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/2.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>小复习：</p>
 <blockquote>
 <p>闭包用到的核心其实就是：在一个函数中返回另外一个函数的引用，只不过这个被返回的函数中用到了其他函数中的变量而已。说到底就是 只要用一个变量指向某个函数代码块，就可以调用它</p>
@@ -340,16 +340,16 @@
 <h3 id="4-2-测试"><a href="#4-2-测试" class="headerlink" title="4.2 测试"></a>4.2 测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">check_login</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">inner</span>():<br>        <span class="hljs-comment"># 验证1</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;admin&quot;</span> != <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入用户名:&quot;</span>):<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;用户名不正确&quot;</span><br>        <span class="hljs-comment"># 验证2</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;123456&quot;</span> != <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入密码:&quot;</span>):<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;密码不正确&quot;</span><br>        <span class="hljs-comment"># 验证3</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;7788&quot;</span> != <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入手机短信验证码:&quot;</span>):<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;验证码不正确&quot;</span><br><br>        func()<br><br>    <span class="hljs-keyword">return</span> inner<br><br><br><span class="hljs-meta">@check_login</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">f1</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;f1&#x27;</span>)<br><br><br>f1()  <span class="hljs-comment"># 调用f1函数</span><br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/3.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/3.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h3 id="4-3-研究实现-的功能"><a href="#4-3-研究实现-的功能" class="headerlink" title="4.3 研究实现@的功能"></a>4.3 研究实现<code>@</code>的功能</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">check_login</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">inner</span>():<br>        <span class="hljs-comment"># 验证1</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;admin&quot;</span> != <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入用户名:&quot;</span>):<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;用户名不正确&quot;</span><br>        <span class="hljs-comment"># 验证2</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;123456&quot;</span> != <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入密码:&quot;</span>):<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;密码不正确&quot;</span><br>        <span class="hljs-comment"># 验证3</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;7788&quot;</span> != <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入手机短信验证码:&quot;</span>):<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;验证码不正确&quot;</span><br><br>        func()<br><br>    <span class="hljs-keyword">return</span> inner<br><br><br><span class="hljs-comment"># @check_login</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">f1</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;f1&#x27;</span>)<br><br><span class="hljs-comment"># 下一行代码完成了第18行@check_login的作用</span><br>f1 = check_login(f1)<br><br>f1()  <span class="hljs-comment"># 调用f1函数复制Error复制成功...</span><br></code></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/4.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/4.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>Low BBB 你明白了吗？要是没明白的话，我晚上去你家帮你实现吧！！！</p>
 <h3 id="4-4-使用-对函数装饰的时间"><a href="#4-4-使用-对函数装饰的时间" class="headerlink" title="4.4 使用@对函数装饰的时间"></a>4.4 使用<code>@</code>对函数装饰的时间</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">timefun</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----开始装饰----&quot;</span>)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped_func</span>():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----开始调用原函数----&quot;</span>)<br>        func()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----结束调用原函数----&quot;</span>)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----完成装饰----&quot;</span>)<br>    <span class="hljs-keyword">return</span> wrapped_func<br><br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">helloworld</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;helloworld&quot;</span>)<br><br><br>helloworld()  <span class="hljs-comment"># 注意此时并没有调用函数helloworld，如果运行结果中出现了一些信息，则说明@timefun开始装饰</span><br>              <span class="hljs-comment"># 的时间是Python解释器在遇到那句代码时进行，而不是因为调用被装饰的函数 才开始装饰</span><br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/5.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/5.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h3 id="4-5-思考"><a href="#4-5-思考" class="headerlink" title="4.5 思考"></a>4.5 思考</h3><p>其实实现装饰器用到了闭包，只是将闭包中外部函数的返回值 给了 被装饰函数名字，从而修改了函数指向而已</p>
 <p>那么，有个问题需要想想：在使用普通闭包 与 将闭包用作实现装饰器 时，有什么不同吗？</p>
 <p>闭包例子</p>
@@ -358,7 +358,7 @@
 <p>装饰器例子</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">log</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">call</span>():<br>        ret = func()<br>        <span class="hljs-keyword">if</span> ret <span class="hljs-keyword">and</span> <span class="hljs-built_in">isinstance</span>(ret , <span class="hljs-built_in">str</span>):<br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;log.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> f:<br>                f.write(ret)<br><br>        <span class="hljs-keyword">return</span> ret<br><br>    <span class="hljs-keyword">return</span> call<br><br><br><span class="hljs-meta">@log</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">print_hello</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world&quot;</span><br><br><br><span class="hljs-built_in">print</span>(print_hello())<br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/6.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/6.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>小总结：</p>
 <ul>
 <li>普通闭包：内部函数将使用的外部变量当做数据来用</li>
@@ -376,25 +376,25 @@
 <h2 id="5-深入装饰器"><a href="#5-深入装饰器" class="headerlink" title="5. 深入装饰器"></a>5. 深入装饰器</h2><h3 id="5-1-对无参数的函数进行装饰"><a href="#5-1-对无参数的函数进行装饰" class="headerlink" title="5.1 对无参数的函数进行装饰"></a>5.1 对无参数的函数进行装饰</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime, sleep<br><br><span class="hljs-comment"># 定义一个闭包</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">timefun</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped_func</span>():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s called at %s&quot;</span> % (func.__name__, ctime()))<br>        func()<br>    <span class="hljs-keyword">return</span> wrapped_func<br><br><br><span class="hljs-meta">@timefun  </span><span class="hljs-comment"># 使用装饰器对foo进行装饰，此时相当于foo = timefun(foo)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;I am foo&quot;</span>)<br><br>foo()  <span class="hljs-comment"># 相当于调用的是wrapped_func函数</span><br>sleep(<span class="hljs-number">2</span>)<br>foo()  <span class="hljs-comment"># 相当于调用的是wrapped_func函数</span><br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/13.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/13.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>上面代码理解装饰器执行行为可理解成</p>
 <ol>
 <li>&#96;&#96;&#96;<br>foo &#x3D; timefun(foo)<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><br>   <span class="hljs-number">1.</span> foo先作为参数赋值给<span class="hljs-keyword">func</span>后，<span class="hljs-title function_">foo</span>接收指向<span class="hljs-title function_">timefun</span>返回的<span class="hljs-title function_">wrapped_func</span><br><br><span class="hljs-number">2.</span> 执行<br><br></code></pre></td></tr></table></figure>
 foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><br>   <span class="hljs-number">1.</span> 调用foo()即等价调用wrapped_func()<br>   <span class="hljs-number">2.</span> 内部函数wrapped_func被引用，所以外部函数的func变量(自由变量)并没有释放<br>   <span class="hljs-number">3.</span> func里保存的是原foo函数对象<br><br>![](装饰器/<span class="hljs-number">14.</span>png)<br><br><span class="hljs-comment">### 5.2 对有参数的函数进行装饰</span><br><br>```python<br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime, sleep<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">timefun</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped_func</span>(<span class="hljs-params">a, b</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s called at %s&quot;</span> % (func.__name__, ctime()))<br>        <span class="hljs-built_in">print</span>(a, b)<br>        func(a, b)<br>    <span class="hljs-keyword">return</span> wrapped_func<br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-built_in">print</span>(a+b)<br><br>foo(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>)<br>sleep(<span class="hljs-number">2</span>)<br>foo(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)复制Error复制成功...<br></code></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/15.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/15.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h3 id="5-3-对带有不定长参数的函数进行装饰"><a href="#5-3-对带有不定长参数的函数进行装饰" class="headerlink" title="5.3 对带有不定长参数的函数进行装饰"></a>5.3 对带有不定长参数的函数进行装饰</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime, sleep<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">timefun</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped_func</span>(<span class="hljs-params">*args, **kwargs</span>):<br>        <span class="hljs-comment"># args=(3,5,7)</span><br>        <span class="hljs-comment"># kwargs = &#123;&#125;</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s called at %s&quot;</span>%(func.__name__, ctime()))<br>        func(*args, **kwargs)  <span class="hljs-comment"># 对args,kwargs进行拆包，此时相当于func(3,5,7)</span><br>    <span class="hljs-keyword">return</span> wrapped_func<br><br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">a, b, c</span>):<br>    <span class="hljs-comment"># a=3,b=5,c=7</span><br>    <span class="hljs-built_in">print</span>(a+b+c)  <span class="hljs-comment"># 15</span><br><br>foo(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>)  <span class="hljs-comment"># 将3，5，7这些未命名参数传递到第5行函数中，此时args用元组存储</span><br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/7.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/7.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h3 id="5-4-对带有return的函数进行装饰"><a href="#5-4-对带有return的函数进行装饰" class="headerlink" title="5.4 对带有return的函数进行装饰"></a>5.4 对带有<code>return</code>的函数进行装饰</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime, sleep<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">timefun</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped_func</span>():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s called at %s&quot;</span> % (func.__name__, ctime()))<br>        func()<br>    <span class="hljs-keyword">return</span> wrapped_func<br><br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;I am foo&quot;</span>)<br><br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_info</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;----hahah---&#x27;</span><br><br>foo()<br>sleep(<span class="hljs-number">2</span>)<br>foo()<br><br><span class="hljs-built_in">print</span>(get_info())  <span class="hljs-comment"># 可以看到这里并没有 get_info这个函数 返回的数据，因此这里有不完善的地方</span><br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>执行结果:</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/8.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/8.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>如果修改装饰器为<code>return func()</code>，完整代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime, sleep<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">timefun</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped_func</span>():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s called at %s&quot;</span> % (func.__name__, ctime()))<br>        <span class="hljs-comment"># 这里应该加上return ，及时func指向的函数没有返回值，那么默认也是None，</span><br>        <span class="hljs-comment"># 此时无非是return None而已，也是可以的</span><br>        <span class="hljs-keyword">return</span> func()<br>    <span class="hljs-keyword">return</span> wrapped_func<br><br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">foo</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;I am foo&quot;</span>)<br><br><br><span class="hljs-meta">@timefun</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_info</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;----hahah---&#x27;</span><br><br>foo()<br>sleep(<span class="hljs-number">2</span>)<br>foo()<br><br><span class="hljs-built_in">print</span>(get_info())<br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/16.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/16.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <p>小总结：</p>
 <p>一般情况下为了让装饰器更通用，可以有<code>return</code>，即使这个被装饰的函数默认没有返回值也不会有问题，因为此时相当于<code>return None</code></p>
 <h3 id="5-5-多个装饰器对同一个函数装饰"><a href="#5-5-多个装饰器对同一个函数装饰" class="headerlink" title="5.5 多个装饰器对同一个函数装饰"></a>5.5 多个装饰器对同一个函数装饰</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义函数：完成包裹数据</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">makeBold</span>(<span class="hljs-params">fn</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped</span>():<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;b&gt;&quot;</span> + fn() + <span class="hljs-string">&quot;&lt;/b&gt;&quot;</span><br>    <span class="hljs-keyword">return</span> wrapped<br><br><span class="hljs-comment"># 定义函数：完成包裹数据</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">makeItalic</span>(<span class="hljs-params">fn</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">wrapped</span>():<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;i&gt;&quot;</span> + fn() + <span class="hljs-string">&quot;&lt;/i&gt;&quot;</span><br>    <span class="hljs-keyword">return</span> wrapped<br><br><span class="hljs-meta">@makeBold</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test1</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world-1&quot;</span><br><br><span class="hljs-meta">@makeItalic</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test2</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world-2&quot;</span><br><br><span class="hljs-meta">@makeBold</span><br><span class="hljs-meta">@makeItalic</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test3</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world-3&quot;</span><br><br><span class="hljs-built_in">print</span>(test1())<br><span class="hljs-built_in">print</span>(test2())<br><span class="hljs-built_in">print</span>(test3())复制Error复制成功...<br></code></pre></td></tr></table></figure>
@@ -402,21 +402,21 @@ foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span c
 <p>运行结果:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>hello world-1<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>hello world-2<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>hello world-3<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/10.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/10.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h3 id="5-6-装饰器带参数"><a href="#5-6-装饰器带参数" class="headerlink" title="5.6 装饰器带参数"></a>5.6 装饰器带参数</h3><p>在原有装饰器的基础上，设置外部变量</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">call_out2</span>(<span class="hljs-params">timeout=<span class="hljs-number">0</span></span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">call_out1</span>(<span class="hljs-params">func</span>):<br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">call</span>():<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----1----&quot;</span>)<br>            time.sleep(timeout)<br>            ret = func()<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----2----&quot;</span>)<br>            <span class="hljs-keyword">return</span> ret<br>        <span class="hljs-keyword">return</span> call<br>    <span class="hljs-keyword">return</span> call_out1<br><br><br><span class="hljs-comment"># 下面的装饰过程</span><br><span class="hljs-comment"># 1. 调用timefun_arg(&quot;itcast&quot;) 得到一个返回值，即time_fun</span><br><span class="hljs-comment"># 3. 然后执行time_fun(foo) 得到一个返回值，即wrapped_func</span><br><span class="hljs-comment"># 4. 让foo = wrapped_fun，即foo现在指向wrapped_func</span><br><span class="hljs-meta">@call_out2(<span class="hljs-params"><span class="hljs-number">2</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">print_hello</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello world&quot;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;ok&quot;</span><br><br><br><span class="hljs-built_in">print</span>(print_hello())<br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>可以理解为</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markup"># 1. 修改print_hello的指向<br>print_hello = call_out2(2)(print_hello)<br># 2. 调用print_hello指向的新的函数<br>print_hello()复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/11.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/11.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h3 id="5-7-用类当做装饰器"><a href="#5-7-用类当做装饰器" class="headerlink" title="5.7 用类当做装饰器"></a>5.7 用类当做装饰器</h3><p>装饰器函数其实是这样一个接口约束，它必须接受一个callable对象作为参数，然后返回一个callable对象。在Python中一般callable对象都是函数，但也有例外。只要某个对象重写了 <code>__call__()</code> 方法，那么这个对象就是callable的。</p>
 <h3 id="5-7-1-直接调用实例对象"><a href="#5-7-1-直接调用实例对象" class="headerlink" title="5.7.1 直接调用实例对象"></a>5.7.1 直接调用实例对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span>():<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__call__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;call me!&#x27;</span>)<br><br>t = Test()<br>t()  <span class="hljs-comment"># 因为创建t的类Test中实现了__call__方法，那么也就意味着可以直接调用这个实例对象复制Error复制成功...</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="5-7-2-使用类对函数进行装饰"><a href="#5-7-2-使用类对函数进行装饰" class="headerlink" title="5.7.2 使用类对函数进行装饰"></a>5.7.2 使用类对函数进行装饰</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, func</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---初始化---&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;func name is %s&quot;</span> % func.__name__)<br>        self.__func = func<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__call__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---装饰器中的功能---&quot;</span>)<br>        self.__func()<br><br><br><span class="hljs-comment">#说明：</span><br><span class="hljs-comment">#1. 当用Test来装作装饰器对test函数进行装饰的时候，首先会创建Test的实例对象</span><br><span class="hljs-comment">#   并且会把test这个函数名当做参数传递到__init__方法中</span><br><span class="hljs-comment">#   即在__init__方法中的属性__func指向了test指向的函数</span><br><span class="hljs-comment">#2. test指向了用Test创建出来的实例对象</span><br><span class="hljs-comment">#3. 当在使用test()进行调用时，就相当于直接调用实例对象，因此会调用这个对象的__call__方法</span><br><span class="hljs-comment">#4. 为了能够在__call__方法中调用原来test指向的函数体，所以在__init__方法中就需要一个实例属性来保存这个函数体的引用</span><br><span class="hljs-comment">#   所以才有了self.__func = func这句代码，从而在调用__call__方法中能够调用到test之前的函数体</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;----test---&quot;</span>)<br><br><br>test()  <span class="hljs-comment"># 如果把这句话注释，重新运行程序，依然会看到&quot;--初始化--&quot;</span><br>复制Error复制成功...<br></code></pre></td></tr></table></figure>
 
 <p>运行结果如下：</p>
-<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/12.png" srcset="/HeliumzzZ/HeliumzzZ.github.io/img/loading.gif" lazyload></p>
+<p><img src="/HeliumzzZ/HeliumzzZ.github.io/%E8%A3%85%E9%A5%B0%E5%99%A8/12.png" srcset="/HeliumzzZ/img/loading.gif" lazyload></p>
 <h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><ol>
 <li>装饰器：能够快速将函数的指向修改，能够在不修改代码的前提下，给函数添加功能的方式</li>
 <li>装饰器功能：给函数添加功能</li>
@@ -434,7 +434,7 @@ foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span c
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/HeliumzzZ/HeliumzzZ.github.io/categories/python%E9%AB%98%E7%BA%A7/">python高级</a>
+                      <a class="hover-with-bg" href="/HeliumzzZ/categories/python%E9%AB%98%E7%BA%A7/">python高级</a>
                     
                   </div>
                 
@@ -442,9 +442,9 @@ foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span c
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/HeliumzzZ/HeliumzzZ.github.io/tags/python/">python</a>
+                      <a class="hover-with-bg" href="/HeliumzzZ/tags/python/">python</a>
                     
-                      <a class="hover-with-bg" href="/HeliumzzZ/HeliumzzZ.github.io/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/">装饰器</a>
+                      <a class="hover-with-bg" href="/HeliumzzZ/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/">装饰器</a>
                     
                   </div>
                 
@@ -465,7 +465,7 @@ foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span c
                   <article class="post-next col-6">
                     
                     
-                      <a href="/HeliumzzZ/HeliumzzZ.github.io/2022/05/03/%E9%97%AD%E5%8C%85/">
+                      <a href="/HeliumzzZ/2022/05/03/%E9%97%AD%E5%8C%85/">
                         <span class="hidden-mobile">闭包</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -618,18 +618,18 @@ foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span c
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/HeliumzzZ/HeliumzzZ.github.io/js/events.js" ></script>
-<script  src="/HeliumzzZ/HeliumzzZ.github.io/js/plugins.js" ></script>
+<script  src="/HeliumzzZ/js/events.js" ></script>
+<script  src="/HeliumzzZ/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/HeliumzzZ/HeliumzzZ.github.io/js/local-search.js" ></script>
+  <script  src="/HeliumzzZ/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/HeliumzzZ/HeliumzzZ.github.io/js/img-lazyload.js" ></script>
+    <script  src="/HeliumzzZ/js/img-lazyload.js" ></script>
   
 
 
@@ -708,7 +708,7 @@ foo()<figure class="highlight python"><table><tr><td class="gutter"><pre><span c
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/HeliumzzZ/HeliumzzZ.github.io/js/boot.js" ></script>
+<script  src="/HeliumzzZ/js/boot.js" ></script>
 
 
 </body>
