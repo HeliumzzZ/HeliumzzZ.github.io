@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>自动打卡脚本</title>
+    <link href="/2022/05/27/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/"/>
+    <url>/2022/05/27/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h1><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p>使用此脚本需要抓微信的<code>openid</code>，这里以苹果Stream抓包工具为例，教程如下：</p><ul><li>打开Stream，点击开始抓包</li><li>点开微信进入we重邮小程序</li><li>点击下方的资讯后退出微信</li><li>打开Stream，点击停止抓包，查看抓包历史找到<code>url</code>里带<code>news</code>这个字段的请求，即可获取<code>openid</code></li></ul><h2 id="Server酱"><a href="#Server酱" class="headerlink" title="Server酱"></a>Server酱</h2><p>可以查看打卡结果，并推送到微信。</p><p>server酱链接为：<a href="https://sct.ftqq.com/forward">https://sct.ftqq.com/forward</a></p><p>拿到这个apikey</p><p><img src="/image-20220527015507038.png" alt="image-20220527015507038"></p><h2 id="脚本部署"><a href="#脚本部署" class="headerlink" title="脚本部署"></a>脚本部署</h2><p>这里使用的是Github Action</p><ul><li><p>将此项目fork到自己的仓库</p></li><li><p>点击<code>setting</code>设置密钥，填写对应字段，<code>SERVER</code>为SERVER酱apikey，<code>XH</code>为学号，<code>OPENID</code>为上面抓包抓到的<code>openid</code></p><p><img src="/image-20220527015431937.png" alt="image-20220527015431937"></p><p><img src="/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/image-20220527015538526.png" alt="image-20220527015538526"></p></li><li><p>修改<code>自动打卡.py</code>中的姓名，性别，地址，详细地址字段</p><p><img src="/image-20220527015842271.png" alt="image-20220527015842271"></p></li></ul><p><strong>到这里所有的配置就已经完成了</strong></p><h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>该脚本只是本人闲来无事开发玩的，疫情期间注意安全，该打卡打卡，使用此脚本造成的任何后果与本人无关</p><p>链接：<a href="https://github.com/HeliumzzZ/CQUPT-MRDK">https://github.com/HeliumzzZ/CQUPT-MRDK</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>自动打卡脚本</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java五子棋二</title>
     <link href="/2022/05/20/Java%E4%BA%94%E5%AD%90%E6%A3%8B%E4%BA%8C/"/>
     <url>/2022/05/20/Java%E4%BA%94%E5%AD%90%E6%A3%8B%E4%BA%8C/</url>
