@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -25,15 +25,19 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+  
   <title>分类 - 春夏秋冬</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,24 +46,43 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"d7733d62e35f6db501ab3fd96c5d3329","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
-  <header style="height: 60vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>何时能毕业</strong>
+      <strong>Fluid</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -138,6 +161,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -150,29 +174,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="分类">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="分类"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -187,24 +217,27 @@
 <div class="category-list">
   
   
-  
-  
     
     
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="python高级"
         id="heading-eacebcede4d1e4ce15ea7fddf79fb4f5" role="tab" data-toggle="collapse" href="#collapse-eacebcede4d1e4ce15ea7fddf79fb4f5"
         aria-expanded="false"
       >
         python高级
+        <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
-      <a href="/categories/python%E9%AB%98%E7%BA%A7/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>6</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-eacebcede4d1e4ce15ea7fddf79fb4f5" role="tabpanel" aria-labelledby="heading-eacebcede4d1e4ce15ea7fddf79fb4f5">
+      
+        <a href="/categories/python%E9%AB%98%E7%BA%A7/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>6</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-eacebcede4d1e4ce15ea7fddf79fb4f5"
+           role="tabpanel" aria-labelledby="heading-eacebcede4d1e4ce15ea7fddf79fb4f5">
         
         
           
@@ -213,42 +246,54 @@
     
       
       
-        <a href="/2022/05/18/%E7%B1%BB%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/18/%E7%B1%BB%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" title="类与装饰器"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">类与装饰器</span>
         </a>
       
     
       
       
-        <a href="/2022/05/17/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/17/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/" title="python的hash机制"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">python的hash机制</span>
         </a>
       
     
       
       
-        <a href="/2022/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8/" title="装饰器"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">装饰器</span>
         </a>
       
     
       
       
-        <a href="/2022/05/03/%E9%97%AD%E5%8C%85/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/03/%E9%97%AD%E5%8C%85/" title="闭包"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">闭包</span>
         </a>
       
     
       
       
-        <a href="/2022/05/03/%E7%94%9F%E6%88%90%E5%99%A8/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/03/%E7%94%9F%E6%88%90%E5%99%A8/" title="生成器"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">生成器</span>
         </a>
       
     
       
       
-        <a href="/2022/05/03/%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/03/%E8%BF%AD%E4%BB%A3%E5%99%A8/" title="迭代器"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">迭代器</span>
         </a>
       
@@ -261,20 +306,25 @@
   
     
     
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Hexo"
         id="heading-c00d1eb68b529768ba98c975c76a9b66" role="tab" data-toggle="collapse" href="#collapse-c00d1eb68b529768ba98c975c76a9b66"
         aria-expanded="false"
       >
         Hexo
+        <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
-      <a href="/categories/Hexo/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-c00d1eb68b529768ba98c975c76a9b66" role="tabpanel" aria-labelledby="heading-c00d1eb68b529768ba98c975c76a9b66">
+      
+        <a href="/categories/Hexo/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c00d1eb68b529768ba98c975c76a9b66"
+           role="tabpanel" aria-labelledby="heading-c00d1eb68b529768ba98c975c76a9b66">
         
         
           
@@ -283,7 +333,9 @@
     
       
       
-        <a href="/2022/05/01/Fluid%E4%B8%BB%E9%A2%98/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/01/Fluid%E4%B8%BB%E9%A2%98/" title="Fluid主题"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">Fluid主题</span>
         </a>
       
@@ -296,20 +348,25 @@
   
     
     
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Java"
         id="heading-d52387880e1ea22817a72d3759213819" role="tab" data-toggle="collapse" href="#collapse-d52387880e1ea22817a72d3759213819"
         aria-expanded="false"
       >
         Java
+        <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
-      <a href="/categories/Java/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-d52387880e1ea22817a72d3759213819" role="tabpanel" aria-labelledby="heading-d52387880e1ea22817a72d3759213819">
+      
+        <a href="/categories/Java/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-d52387880e1ea22817a72d3759213819"
+           role="tabpanel" aria-labelledby="heading-d52387880e1ea22817a72d3759213819">
         
         
           
@@ -318,7 +375,9 @@
     
       
       
-        <a href="/2022/05/19/Java%E4%BA%94%E5%AD%90%E6%A3%8B%E4%B8%80/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/19/Java%E4%BA%94%E5%AD%90%E6%A3%8B%E4%B8%80/" title="Java五子棋一"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">Java五子棋一</span>
         </a>
       
@@ -331,20 +390,25 @@
   
     
     
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="设计模式"
         id="heading-301a19970448f8e4f27ddae7a7d415fe" role="tab" data-toggle="collapse" href="#collapse-301a19970448f8e4f27ddae7a7d415fe"
         aria-expanded="false"
       >
         设计模式
+        <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
-      <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-301a19970448f8e4f27ddae7a7d415fe" role="tabpanel" aria-labelledby="heading-301a19970448f8e4f27ddae7a7d415fe">
+      
+        <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-301a19970448f8e4f27ddae7a7d415fe"
+           role="tabpanel" aria-labelledby="heading-301a19970448f8e4f27ddae7a7d415fe">
         
         
           
@@ -353,7 +417,9 @@
     
       
       
-        <a href="/2022/05/30/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/30/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">单例模式</span>
         </a>
       
@@ -366,20 +432,25 @@
   
     
     
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="自动打卡脚本"
         id="heading-58e57b0b6ae3a75f518ca7e4a7ae3619" role="tab" data-toggle="collapse" href="#collapse-58e57b0b6ae3a75f518ca7e4a7ae3619"
         aria-expanded="false"
       >
         自动打卡脚本
+        <span class="list-group-count"></span>
         <i class="iconfont icon-arrowright"></i>
       </a>
-      <a href="/categories/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-58e57b0b6ae3a75f518ca7e4a7ae3619" role="tabpanel" aria-labelledby="heading-58e57b0b6ae3a75f518ca7e4a7ae3619">
+      
+        <a href="/categories/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-58e57b0b6ae3a75f518ca7e4a7ae3619"
+           role="tabpanel" aria-labelledby="heading-58e57b0b6ae3a75f518ca7e4a7ae3619">
         
         
           
@@ -388,7 +459,9 @@
     
       
       
-        <a href="/2022/05/27/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/" class="list-group-item list-group-item-action">
+        <a href="/2022/05/27/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%A1%E8%84%9A%E6%9C%AC/" title="自动打卡脚本"
+           class="list-group-item list-group-item-action
+           ">
           <span class="category-post">自动打卡脚本</span>
         </a>
       
@@ -400,6 +473,7 @@
     </div>
   
 </div>
+
 
               </div>
             </div>
@@ -428,56 +502,34 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
+  
+  
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
@@ -496,37 +548,18 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
@@ -536,42 +569,28 @@
 
 
 
-
-
-
-
-
-
   
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?d7733d62e35f6db501ab3fd96c5d3329";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
 
+  <script  src="/js/local-search.js" ></script>
 
-<!-- 主题的启动项 保持在最底部 -->
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

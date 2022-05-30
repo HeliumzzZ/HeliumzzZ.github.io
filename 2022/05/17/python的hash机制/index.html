@@ -1,0 +1,742 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="陈泓宇">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="从cpython源码理解hash机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python的hash机制">
+<meta property="og:url" content="http://example.com/2022/05/17/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="春夏秋冬">
+<meta property="og:description" content="从cpython源码理解hash机制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
+<meta property="article:published_time" content="2022-05-17T13:19:54.000Z">
+<meta property="article:modified_time" content="2022-05-17T16:01:49.909Z">
+<meta property="article:author" content="陈泓宇">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="hash">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
+  
+  
+  
+  <title>python的hash机制 - 春夏秋冬</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="python的hash机制"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-17 21:19" pubdate>
+          2022年5月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python的hash机制</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>假设我们有如下场景：</p>
+<p>我们在玩一个二维游戏，我们想知道一个坐标上站了多少玩家</p>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Position</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x, y</span>):<br>        self.x = x;<br>        self.y = y;<br><br><br>pos = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>pos2 = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>(pos), <span class="hljs-built_in">id</span>(pos2))<br>d = &#123;&#125;<br>d[pos] = <span class="hljs-number">1</span><br>d[pos2] = <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(d)<br></code></pre></td></tr></table></figure>
+
+<p>理所当然我们会设置如上的代码，使用一个Position类来设置坐标，使用一个字典来保存对应坐标的人数，此时我们希望<code>pos</code>和<code>pos2</code>在字典中对应的键是一样的，但是实际结果是这样吗？</p>
+<p>运行结果：</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到我们并没有将键值更改，而是字典中存在了两个键分别对应不同的键值，这并不是我们期望的结果，通过打印对象<code>id</code>我们可以知道两个实例对象的<code>id</code>并不相同，因此字典并不认为他们相同。针对此问题我们如何解决呢？</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>我们理所当然的会想到，我们可以重写<code>Position</code>类中的<code>__eq__</code>函数让两个对象相等，因此我们对代码做出如下修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Position</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x, y</span>):<br>        self.x = x;<br>        self.y = y;<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__eq__</span>(<span class="hljs-params">self, other</span>):<br>        <span class="hljs-keyword">return</span> self.x == other.x <span class="hljs-keyword">and</span> self.y == other.y<br><br><br>pos = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>pos2 = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(pos==pos2)<br><br>d = &#123;&#125;<br>d[pos] = <span class="hljs-number">1</span><br>d[pos2] = <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(d)<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到此时两个对象确实相等，但是却报错了，为什么我们不加<code>__eq__</code>函数没报错，加了反而报错了呢?</p>
+<h2 id="源码理解"><a href="#源码理解" class="headerlink" title="源码理解"></a>源码理解</h2><p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里就是我们在给一个字典设置插入数据时使用的方法，他返回一个函数我们点到<code>_PyDict_SetItem_Take2</code>里进行查看</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>在这里可以看到如果这个<code>key</code>不是一个<code>unicode</code>的话就会进入<code>PyObject_Hash</code>里取一个哈希值，我们再进入<code>PyObject_Hash</code>进行查看</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个函数并不难，如果有hash方法则返回一个hash值，如果没有则报异常我们再进入这个异常中看一下</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/6.png" srcset="/img/loading.gif" lazyload></p>
+<p>在这里我们看到了我们代码中报的错误，也就是说当一个<code>object</code>没有<code>hashfunction</code>时，如果我们想要将其作为字典中的<code>key</code>就会报<code>unhashable type:</code>，但是当我们没有设置<code>__eq__</code>时我们并不会报错，也就是说我们的对象是<code>hashable</code>的，但是我们设置了却发生了错误，这中间发生了什么？</p>
+<p>我们再回到<code>PyObject_Hash</code>函数中</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里<code>tp_hash</code>是一个函数指针，就是当他想求一个<code>hash</code>函数时，所用的到指针</p>
+<ul>
+<li>第一个问题：为什么我们没有在类里设置<code>hash</code>函数，它可以作为字典的<code>key</code></li>
+<li>第二个问题：为什么我们在类里设置<code>__eq__</code>时会报错？</li>
+</ul>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><h3 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h3><p>其实，我们理所当然可以想到，在我们定义一个类时会自动继承基类<code>Object</code>，这里是有一个默认的<code>hash</code>函数的，在源码中我们也可以看到</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/8.png" srcset="/img/loading.gif" lazyload></p>
+<p>实际上就是使用基类的<code>hash</code>方法对这个对象的地址进行了<code>hash</code>操作，因为我们每个对象的<code>id</code>也就是地址是不同的，所以对应字典中两个<code>key</code>，那么为什么我们在定义<code>__eq__</code>后会报错呢？如下图所示</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/9.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里的代码是当我们定义一个类是会继承多少基类中的方法，我们可以看到当我们<code>type-&gt;tp_richcompare == NULL &amp;&amp; type-&gt;tp_hash == NULL</code>与我们没有重写<code>hash</code>时才会继承基类的<code>richcompare</code>与<code>hash</code>，但是我们并没有重写基类的<code>hash</code>方法。我们点开<code>overrides_hash</code>函数</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/10.png" srcset="/img/loading.gif" lazyload></p>
+<p>如上图所示，现在我们就很清晰了，只要我们重写了<code>__eq__</code>就相当于我们重写了<code>hash</code>，也就是说由于我们重写了<code>__eq__</code>，导致我们没有继承基类的<code>hash</code>函数，也就导致我们无法把这个对象作为<code>dict</code>里的一个<code>key</code>。</p>
+<h3 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h3><p>因此此时我们只需要在这个类里实现<code>hash</code>函数，我们就可以解决这一问题</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Position</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x, y</span>):<br>        self.x = x;<br>        self.y = y;<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__hash__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">hash</span>(self.x, self.y)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__eq__</span>(<span class="hljs-params">self, other</span>):<br>        <span class="hljs-keyword">return</span> self.x == other.x <span class="hljs-keyword">and</span> self.y == other.y<br><br><br>pos = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>pos2 = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(pos == pos2)<br><br>d = &#123;&#125;<br>d[pos] = <span class="hljs-number">1</span><br>d[pos2] = <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(d)<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/11.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们得到了我们想要的结果</p>
+<p>这里我们已经实现了<code>hash</code>，那如果我们不要<code>__eq__</code>呢？</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Position</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x, y</span>):<br>        self.x = x;<br>        self.y = y;<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__hash__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">hash</span>((self.x, self.y))<br><br><br><br><br>pos = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>pos2 = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(pos == pos2)<br><br>d = &#123;&#125;<br>d[pos] = <span class="hljs-number">1</span><br>d[pos2] = <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(d)<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/12.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里又变成了两个<code>key</code>，其实这很好理解，两个值一样的数据它可能会有相同的<code>hash</code>值，这也就是<code>Hash collision</code>（哈希碰撞），在我们没有定义<code>__eq__</code>时它不仅比较两个对象的<code>hash</code>值同时比较两个对象的<code>id</code>，我们知道两个对象的<code>id</code>是不同的，所以<code>dict</code>并不会认为这两个对象代表同一个<code>key</code>。</p>
+<p>说到这里，我们可能会认为如果两个对象有相同的<code>hash</code>，并且<code>eq</code>他就是一个<code>key</code>，如果仅有相同的<code>hash</code>但是并不<code>eq</code>那就是两个<code>key</code>。真的是这样吗？再看下面的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Position</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x, y</span>):<br>        self.x = x;<br>        self.y = y;<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__hash__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">hash</span>((self.x, self.y))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__eq__</span>(<span class="hljs-params">self, other</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><br>pos = Position(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>pos2 = pos<br><span class="hljs-built_in">print</span>(pos == pos2)<br><br>d = &#123;&#125;<br>d[pos] = <span class="hljs-number">1</span><br>d[pos2] = <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(d)<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/13.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里<code>eq</code>永远返回<code>False</code>，这意味着不管两个对象是否真的<code>eq</code>我们都认为他是不相等的，同时我们将<code>pos</code>直接赋值给了<code>pos</code>，在python中一切皆引用，此时他们的<code>id</code>是相同的，我们打印它们是否相等，结果却是不相等，但是<code>dict</code>认为它们是同一个<code>key</code>。这又是为什么呢？我们再回到源码中</p>
+<p><img src="/python%E7%9A%84hash%E6%9C%BA%E5%88%B6/14.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里其实比较的是新的<code>key</code>和原来hash位置相同的<code>key</code>是否是相等的，这里是C语言中的相等，也就是这两个地址是否相同，若相同则不会比较后面的<code>hash</code>值以及<code>eq</code>，这也就解释了上述代码的结果。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>自定义类型做<code>dict</code>的<code>key</code>，必须要有<code>__hash__</code>方法，<code>dict</code>判断两个<code>key</code>是不是同一个<code>key</code>时，优先比较这两个<code>key</code>的<code>id</code>，若<code>id</code>相同则认为是一个<code>key</code>，若<code>id</code>不同则比较<code>__hash__</code>和<code>__eq__</code>，且两者同时相等才认为是同一个<code>key</code>。</p>
+<p>学习python的时候觉得很简单，但是深入进去却发现很难也很有趣。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python%E9%AB%98%E7%BA%A7/" class="category-chain-item">python高级</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/hash/">#hash</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>python的hash机制</div>
+      <div>http://example.com/2022/05/17/python的hash机制/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>陈泓宇</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/18/%E7%B1%BB%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" title="类与装饰器">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">类与装饰器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/04/%E8%A3%85%E9%A5%B0%E5%99%A8/" title="装饰器">
+                        <span class="hidden-mobile">装饰器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

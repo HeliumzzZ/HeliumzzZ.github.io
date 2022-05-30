@@ -1,0 +1,796 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="陈泓宇">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="python生成器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成器">
+<meta property="og:url" content="http://example.com/2022/05/03/%E7%94%9F%E6%88%90%E5%99%A8/index.html">
+<meta property="og:site_name" content="春夏秋冬">
+<meta property="og:description" content="python生成器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
+<meta property="article:published_time" content="2022-05-03T10:20:21.000Z">
+<meta property="article:modified_time" content="2022-05-03T11:15:38.414Z">
+<meta property="article:author" content="陈泓宇">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="生成器">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/%E8%BF%AD%E4%BB%A3%E5%99%A8/index.jpg">
+  
+  
+  
+  <title>生成器 - 春夏秋冬</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="生成器"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-03 18:20" pubdate>
+          2022年5月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">生成器</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="1-生成器"><a href="#1-生成器" class="headerlink" title="1.生成器"></a>1.生成器</h2><h3 id="1-1什么是生成器"><a href="#1-1什么是生成器" class="headerlink" title="1.1什么是生成器"></a>1.1什么是生成器</h3><p>通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。</p>
+<p>所以，如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？这样就不必创建完整的<code>list</code>，从而节省大量的空间。</p>
+<p>通俗的理解：</p>
+<p>在Python中，这种一边循环一边计算的机制，称为生成器：generator</p>
+<h3 id="1-2-生成器"><a href="#1-2-生成器" class="headerlink" title="1.2 生成器"></a>1.2 生成器</h3><p>其实利用迭代器，我们也可以在每次迭代获取数据（通过<code>next()</code>方法）时按照特定的规律进行生成。</p>
+<p>但是在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。</p>
+<p>为了达到记录当前状态，并配合<code>next()</code>函数进行迭代使用，</p>
+<p>简言之，迭代器是可以实现在循环的过程中生成数据的，但是稍稍有些复杂</p>
+<p>有一个能具有迭代器的功能，且比它更加简单的方式：生成器(<code>generator</code>)</p>
+<p>生成器是一类特殊的迭代器</p>
+<h3 id="1-3创建一个生成器"><a href="#1-3创建一个生成器" class="headerlink" title="1.3创建一个生成器"></a>1.3创建一个生成器</h3><ul>
+<li><p>方法一</p>
+<p>第一种方法很简单，只需要把一个列表生成式的<code>[]</code>改成’()’就可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs python">nums = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(nums))<br><span class="hljs-built_in">print</span>(nums)<br><br>nums2 = (x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(nums2))<br><span class="hljs-built_in">print</span>(nums2)<br></code></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>说明：</p>
+<ol>
+<li>区别在于最外层<code>[]</code>和<code>()</code>，nums是一个列表，而nums2是一个生成器</li>
+<li>可以直接打印出列表<code>nums</code>的每一个元素，而对于生成器<code>nums2</code>，我们可以按照迭代器的使用方法来使用，即可以通过<code>next()</code>函数、<code>for</code>循环、<code>list()</code>等方法使用</li>
+</ol>
+</li>
+<li><p>方法二</p>
+<p><code>generator</code>功能十分强大</p>
+<p>我们使用不同的方法来实现斐波那契数列进行比较</p>
+<blockquote>
+<p><strong>斐波那契数列</strong>指的是这样一个数列 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233，377，610，987，1597，2584，4181，6765，10946，17711，28657，46368……..</p>
+<p>这个数列从第3项开始，每一项都等于前两项之和。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">nums1 = <span class="hljs-number">1</span><br>nums2 = <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(nums1)<br><br>nums1, nums2 = nums2, nums1 + nums2<br><span class="hljs-built_in">print</span>(nums1)<br><br>nums1, nums2 = nums2, nums1 + nums2<br><span class="hljs-built_in">print</span>(nums1)<br><br>nums1, nums2 = nums2, nums1 + nums2<br><span class="hljs-built_in">print</span>(nums1)<br></code></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面使用迭代器来实现一个斐波那契数列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FibIterator</span>():<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.num1 = <span class="hljs-number">1</span><br>        self.num2 = <span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__iter__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> self<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__next__</span>(<span class="hljs-params">self</span>):<br>        temp = self.num1<br>        self.num1, self.num2 = self.num2, self.num1 + self.num2<br>        <span class="hljs-keyword">return</span> temp<br><br>fib = FibIterator()<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br></code></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用迭代器可以实现但是略显麻烦，下面是使用生成器的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fib_generator</span>():<br>    num1 = <span class="hljs-number">1</span><br>    num2 = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        temp = num1<br>        num1, num2 = num2, num1 + num2<br>        <span class="hljs-keyword">yield</span> temp<br><br><br>fib = fib_generator()<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(fib))<br></code></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>在使用生成器实现的方式中，我们将原本在迭代器<code>__next__</code>方法中实现的基本逻辑放到一个函数中来实现，但是将每次迭代返回数值的<code>return</code>换成了<code>yield</code>，此时新定义的函数便不再是函数，而是一个<strong>生成器</strong>了</p>
+<p>简单来说：只要在<code>def函数</code>中有<code>yield</code>关键字的 就称为 生成器</p>
+<p>此时按照调用函数的方式( <code>fib = fib_generator()</code> )就不再是执行函数体了，而是会返回一个生成器对象，然后就可以按照使用迭代器(因为生成器是一种特殊的迭代器)的方式来使用生成器了</p>
+</li>
+</ul>
+<h2 id="2-yield关键字"><a href="#2-yield关键字" class="headerlink" title="2.yield关键字"></a>2.<code>yield</code>关键字</h2><p>上面的代码，在函数中使用了<code>yield</code>关键字</p>
+<p>说明：</p>
+<ol>
+<li>只要有<code>yield</code>关键字，那么虽然看上去是调用函数，实际上已经变成了创建一个 生成器对象</li>
+<li>通过<code>next</code>调用 生成器，可以让 这个带有<code>yield</code>的方法代码块，开始执行<ul>
+<li>如果是第一次执行，则从<code>def</code>代码块的开始部分执行，直到遇到<code>yield</code>为止，并且把<code>yield</code>关键字后的数值返回，当做<code>next()</code>的返回值</li>
+<li>如果不是第一次执行，则从上一次暂停的位置执行(即从上一次<code>yield</code>关键字的下一个语句开始执行)，直到遇到下一次<code>yield</code>为止，并且把<code>yield</code>关键字后的数值返回，当做<code>next()</code>的返回值</li>
+</ul>
+</li>
+</ol>
+<p>更好的理解带有<code>yield</code>关键字的函数，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fib_generator</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---1---&quot;</span>)<br>    num1 = <span class="hljs-number">1</span><br>    num2 = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---2---&quot;</span>)<br>        temp_num = num1<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---3---&quot;</span>)<br>        num1, num2 = num2, num1+num2<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---4---&quot;</span>)<br>        <span class="hljs-keyword">yield</span> temp_num<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;---5---&quot;</span>)<br><br>fib = fib_generator()<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;执行第1次的next函数---开始--&quot;</span>)<br>num = <span class="hljs-built_in">next</span>(fib)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;执行第1次的next函数---结束--&quot;</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;打印第1次next返回的结果--开始--&quot;</span>)<br><span class="hljs-built_in">print</span>(num)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;打印第1次next返回的结果--结束--&quot;</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;执行第2次的next函数---开始--&quot;</span>)<br>num = <span class="hljs-built_in">next</span>(fib)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;执行第2次的next函数---结束--&quot;</span>)<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;打印第2次next返回的结果--开始--&quot;</span>)<br><span class="hljs-built_in">print</span>(num)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;打印第2次next返回的结果--结束--&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>运行效果如下：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意：</p>
+<ol>
+<li><p>要知道一个<code>def</code>代码块，只要有<code>yield</code>就不再是函数，而是生成器</p>
+</li>
+<li><p>要知道调用<code>def</code>代码块(普通函数)与调用带有<code>yield</code>的<code>def</code>代码块(生成器)的调用方式不同</p>
+</li>
+<li><p>要注意<code>return</code>与<code>yield</code>的功能也不同</p>
+<ul>
+<li><p><code>return</code>接收一个函数，且有返回值</p>
+</li>
+<li><p><code>yield</code>暂停执行一个函数，且有返回值</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-使用send唤醒"><a href="#3-使用send唤醒" class="headerlink" title="3.使用send唤醒"></a>3.使用send唤醒</h2><p>我们除了可以使用<code>next()</code>函数来唤醒，让生成器继续执行外，还可以使用<code>send()</code>函数来唤醒执行。</p>
+<p>使用<code>send()</code>函数的一个好处是：可以在唤醒的同时向断点处传入一个附加数据</p>
+<h3 id="3-1测试send"><a href="#3-1测试send" class="headerlink" title="3.1测试send"></a>3.1测试<code>send</code></h3><p>代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generator_test</span>():<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--1--&quot;</span>)<br>        num = <span class="hljs-keyword">yield</span> <span class="hljs-number">100</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--2--&quot;</span>, <span class="hljs-string">&quot;num=&quot;</span>, num)<br><br><br>g = generator_test()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(g))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(g))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(g))<br><br></code></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/6.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们可以看到num是没有值的</p>
+<p>如果我们使用<code>send</code>唤醒，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generator_test</span>():<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--1--&quot;</span>)<br>        num = <span class="hljs-keyword">yield</span> <span class="hljs-number">100</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--2--&quot;</span>, <span class="hljs-string">&quot;num=&quot;</span>, num)<br><br><br>g = generator_test()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">next</span>(g))<br><span class="hljs-built_in">print</span>(g.send(<span class="hljs-number">11</span>))<br><span class="hljs-built_in">print</span>(g.send(<span class="hljs-number">22</span>))<br></code></pre></td></tr></table></figure>
+
+<p>运行效果如下：</p>
+<p><img src="/%E7%94%9F%E6%88%90%E5%99%A8/7.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意send是不可以传递空值的这样会报错</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li><p>使用了<code>yield</code>关键字的函数不再是函数，而是生成器</p>
+</li>
+<li><p><code>yield</code>关键字有两点作用：</p>
+<ul>
+<li><p>保存当前运行状态（断点），然后暂停执行，即将生成器（函数）挂起</p>
+</li>
+<li><p>将<code>yield</code>关键字后面表达式的值作为返回值返回，此时可以理解为起到了<code>return</code>的作用</p>
+</li>
+</ul>
+</li>
+<li><p>可以使用<code>next()</code>函数让生成器从断点处继续执行，即唤醒生成器（函数）</p>
+</li>
+<li><p>Python3中的生成器可以使用<code>return</code>返回最终运行的返回值</p>
+</li>
+<li><p>生成器是这样一个函数，它记住上一次返回时在函数体中的位置。对生成器函数的第二次（或第 n 次）调用跳转至该函数中间，而上次调用的所有局部变量都保持不变。生成器不仅“记住”了它数据状态；生成器还“记住”了它在流控制构造（在命令式编程中，这种构造不只是数据值）中的位置。</p>
+</li>
+<li><p>生成器的特点：</p>
+<ol>
+<li>存储的是生成数据的方式（即算法），而不是存储生成的数据，因此节约内存</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python%E9%AB%98%E7%BA%A7/" class="category-chain-item">python高级</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/%E7%94%9F%E6%88%90%E5%99%A8/">#生成器</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>生成器</div>
+      <div>http://example.com/2022/05/03/生成器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>陈泓宇</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月3日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/03/%E9%97%AD%E5%8C%85/" title="闭包">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">闭包</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/03/%E8%BF%AD%E4%BB%A3%E5%99%A8/" title="迭代器">
+                        <span class="hidden-mobile">迭代器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
