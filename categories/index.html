@@ -57,7 +57,7 @@
 
 
   
-<link rel="stylesheet" href="//lib.baomitu.com/aplayer/1.10.1/APlayer.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 <link rel="stylesheet" href="/css/diy/ScrollBar.css">
 <link rel="stylesheet" href="/css/diy/mac.css">
 <link rel="stylesheet" href="/css/backgroundize.css">
@@ -658,7 +658,8 @@
 
   
 <script src="/js/diy/music.js"></script>
-<script src="//lib.baomitu.com/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.min.js"></script>
 <script src="/js/backgroundize.js"></script>
@@ -676,8 +677,13 @@
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 <!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
-  <link defer rel="stylesheet" href="/styles/backgroundize.css" />
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
   
+  <div id="aplayer"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script>
+
   <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
   <script data-pjax>
         function GithubCalendarConfig(){
