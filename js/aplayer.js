@@ -14,8 +14,8 @@
         audio: [
           {
             
-            name: "浴室",
-            artist: 'deca joins',
+            name: "春夏秋冬",
+            artist: '张国荣',
             url: 'https://www.ytmp3.cn/down/47484.mp3',
             cover: 'img/OIP.jpg',	
           }
