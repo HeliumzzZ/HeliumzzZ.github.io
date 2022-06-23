@@ -1,0 +1,12 @@
+<h2 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h2><p>These are instructions to deploy the latest version of <strong>CTGAN</strong> to <a href="https://docs.conda.io/en/latest/">conda</a>.<br>It should be done after every new release.</p>
+<h2 id="Update-the-recipe"><a href="#Update-the-recipe" class="headerlink" title="Update the recipe"></a>Update the recipe</h2><p>Prior to making the release on PyPI, you should update the meta.yaml to reflect any changes in the dependencies.<br>Note that you do not need to edit the version number as that is managed by bumpversion.</p>
+<h2 id="Make-the-PyPI-release"><a href="#Make-the-PyPI-release" class="headerlink" title="Make the PyPI release"></a>Make the PyPI release</h2><p>Follow the standard release instructions to make a PyPI release. Then, return here to make the conda release.</p>
+<h2 id="Build-a-package"><a href="#Build-a-package" class="headerlink" title="Build a package"></a>Build a package</h2><p>As part of the PyPI release, you will have updated the stable branch. You should now check out the stable<br>branch and build the conda package.</p>
+<pre><code class="bash">git checkout stable
+cd conda
+conda build -c sdv-dev -c pytorch -c conda-forge .
+</code></pre>
+<h2 id="Upload-to-Anaconda"><a href="#Upload-to-Anaconda" class="headerlink" title="Upload to Anaconda"></a>Upload to Anaconda</h2><p>Finally, you can upload the resulting package to Anaconda.</p>
+<pre><code class="bash">anaconda login
+anaconda upload -u sdv-dev &lt;PATH_TO_PACKAGE&gt;
+</code></pre>

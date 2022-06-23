@@ -1,0 +1,75 @@
+<h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><h2 id="v0-5-1-2022-02-25"><a href="#v0-5-1-2022-02-25" class="headerlink" title="v0.5.1 - 2022-02-25"></a>v0.5.1 - 2022-02-25</h2><p>This release fixes a bug with the decoder instantiation, and also allows users to set a random state for the model<br>fitting and sampling.</p>
+<h3 id="Issues-closed"><a href="#Issues-closed" class="headerlink" title="Issues closed"></a>Issues closed</h3><ul>
+<li>Update self.decoder with correct variable name - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/203">#203</a> by @tejuafonja</li>
+<li>Add random state - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/204">#204</a> by @katxiao</li>
+</ul>
+<h2 id="v0-5-0-2021-11-18"><a href="#v0-5-0-2021-11-18" class="headerlink" title="v0.5.0 - 2021-11-18"></a>v0.5.0 - 2021-11-18</h2><p>This release adds support for Python 3.9 and updates dependencies to ensure compatibility with the<br>rest of the SDV ecosystem, and upgrades to the latests <a href="https://github.com/sdv-dev/RDT/releases/tag/v0.6.1">RDT</a><br>release.</p>
+<h3 id="Issues-closed-1"><a href="#Issues-closed-1" class="headerlink" title="Issues closed"></a>Issues closed</h3><ul>
+<li>Add support for Python 3.9 - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/177">#177</a> by @pvk-developer</li>
+<li>Add pip check to CI workflows - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/174">#174</a> by @pvk-developer</li>
+<li>Typo in <code>CTGAN</code> code - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/158">#158</a> by @ori-katz100 and @fealho</li>
+</ul>
+<h2 id="v0-4-3-2021-07-12"><a href="#v0-4-3-2021-07-12" class="headerlink" title="v0.4.3 - 2021-07-12"></a>v0.4.3 - 2021-07-12</h2><p>Dependency upgrades to ensure compatibility with the rest of the SDV ecosystem.</p>
+<h2 id="v0-4-2-2021-04-27"><a href="#v0-4-2-2021-04-27" class="headerlink" title="v0.4.2 - 2021-04-27"></a>v0.4.2 - 2021-04-27</h2><p>In this release, the way in which the loss function of the TVAE model was computed has been fixed.<br>In addition, the default value of the <code>discriminator_decay</code> has been changed to a more optimal<br>value. Also some improvements to the tests were added.</p>
+<h3 id="Issues-closed-2"><a href="#Issues-closed-2" class="headerlink" title="Issues closed"></a>Issues closed</h3><ul>
+<li><code>TVAE</code>: loss function - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/143">#143</a> by @fealho and @DingfanChen</li>
+<li>Set <code>discriminator_decay</code> to <code>1e-6</code> - Pull request <a href="https://github.com/sdv-dev/CTGAN/pull/145/">#145</a> by @fealho</li>
+<li>Adds unit tests - Pull requests <a href="https://github.com/sdv-dev/CTGAN/pull/140">#140</a> by @fealho</li>
+</ul>
+<h2 id="v0-4-1-2021-03-30"><a href="#v0-4-1-2021-03-30" class="headerlink" title="v0.4.1 - 2021-03-30"></a>v0.4.1 - 2021-03-30</h2><p>This release exposes all the hyperparameters which the user may find useful for both <code>CTGAN</code><br>and <code>TVAE</code>. Also <code>TVAE</code> can now be fitted on datasets that are shorter than the batch<br>size and drops the last batch only if the data size is not divisible by the batch size.</p>
+<h3 id="Issues-closed-3"><a href="#Issues-closed-3" class="headerlink" title="Issues closed"></a>Issues closed</h3><ul>
+<li><code>TVAE</code>: Adapt <code>batch_size</code> to data size - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/135">#135</a> by @fealho and @csala</li>
+<li><code>ValueError</code> from <code>validate_discre_columns</code> with <code>uniqueCombinationConstraint</code> - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/133">133</a> by @fealho and @MLjungg</li>
+</ul>
+<h2 id="v0-4-0-2021-02-24"><a href="#v0-4-0-2021-02-24" class="headerlink" title="v0.4.0 - 2021-02-24"></a>v0.4.0 - 2021-02-24</h2><p>Maintenance relese to upgrade dependencies to ensure compatibility with the rest<br>of the SDV libraries.</p>
+<p>Also add a validation on the CTGAN <code>condition_column</code> and <code>condition_value</code> inputs.</p>
+<h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ul>
+<li>Validate condition_column and condition_value - Issue <a href="https://github.com/sdv-dev/CTGAN/issues/124">#124</a> by @fealho</li>
+</ul>
+<h2 id="v0-3-1-2021-01-27"><a href="#v0-3-1-2021-01-27" class="headerlink" title="v0.3.1 - 2021-01-27"></a>v0.3.1 - 2021-01-27</h2><h3 id="Improvements-1"><a href="#Improvements-1" class="headerlink" title="Improvements"></a>Improvements</h3><ul>
+<li>Check discrete_columns valid before fitting - <a href="https://github.com/sdv-dev/CTGAN/issues/35">Issue #35</a> by @fealho</li>
+</ul>
+<h2 id="Bugs-fixed"><a href="#Bugs-fixed" class="headerlink" title="Bugs fixed"></a>Bugs fixed</h2><ul>
+<li>ValueError: max() arg is an empty sequence - <a href="https://github.com/sdv-dev/CTGAN/issues/115">Issue #115</a> by @fealho</li>
+</ul>
+<h2 id="v0-3-0-2020-12-18"><a href="#v0-3-0-2020-12-18" class="headerlink" title="v0.3.0 - 2020-12-18"></a>v0.3.0 - 2020-12-18</h2><p>In this release we add a new TVAE model which was presented in the original CTGAN paper.<br>It also exposes more hyperparameters and moves epochs and log_frequency from fit to the constructor.</p>
+<p>A new verbose argument has been added to optionally disable unnecessary printing, and a new hyperparameter<br>called <code>discriminator_steps</code> has been added to CTGAN to control the number of optimization steps performed<br>in the discriminator for each generator epoch.</p>
+<p>The code has also been reorganized and cleaned up for better readability and interpretability.</p>
+<p>Special thanks to @Baukebrenninkmeijer @fealho @leix28 @csala for the contributions!</p>
+<h3 id="Improvements-2"><a href="#Improvements-2" class="headerlink" title="Improvements"></a>Improvements</h3><ul>
+<li>Add TVAE - <a href="https://github.com/sdv-dev/CTGAN/issues/111">Issue #111</a> by @fealho</li>
+<li>Move <code>log_frequency</code> to <code>__init__</code> - <a href="https://github.com/sdv-dev/CTGAN/issues/102">Issue #102</a> by @fealho</li>
+<li>Add discriminator steps hyperparameter - <a href="https://github.com/sdv-dev/CTGAN/issues/101">Issue #101</a> by @Baukebrenninkmeijer</li>
+<li>Code cleanup &#x2F; Expose hyperparameters - <a href="https://github.com/sdv-dev/CTGAN/issues/59">Issue #59</a> by @fealho and @leix28</li>
+<li>Publish to conda repo - <a href="https://github.com/sdv-dev/CTGAN/issues/54">Issue #54</a> by @fealho</li>
+</ul>
+<h3 id="Bugs-fixed-1"><a href="#Bugs-fixed-1" class="headerlink" title="Bugs fixed"></a>Bugs fixed</h3><ul>
+<li>Fixed NaN !&#x3D; NaN counting bug. - <a href="https://github.com/sdv-dev/CTGAN/issues/100">Issue #100</a> by @fealho</li>
+<li>Update dependencies and testing - <a href="https://github.com/sdv-dev/CTGAN/issues/90">Issue #90</a> by @csala</li>
+</ul>
+<h2 id="v0-2-2-2020-11-13"><a href="#v0-2-2-2020-11-13" class="headerlink" title="v0.2.2 - 2020-11-13"></a>v0.2.2 - 2020-11-13</h2><p>In this release we introduce several minor improvements to make CTGAN more versatile and<br>propertly support new types of data, such as categorical NaN values, as well as conditional<br>sampling and features to save and load models.</p>
+<p>Additionally, the dependency ranges and python versions have been updated to support up<br>to date runtimes.</p>
+<p>Many thanks @fealho @leix28 @csala @oregonpillow and @lurosenb for working on making this release possible!</p>
+<h3 id="Improvements-3"><a href="#Improvements-3" class="headerlink" title="Improvements"></a>Improvements</h3><ul>
+<li>Drop Python 3.5 support - <a href="https://github.com/sdv-dev/CTGAN/issues/79">Issue #79</a> by @fealho</li>
+<li>Support NaN values in categorical variables - <a href="https://github.com/sdv-dev/CTGAN/issues/78">Issue #78</a> by @fealho</li>
+<li>Sample synthetic data conditioning on a discrete column - <a href="https://github.com/sdv-dev/CTGAN/issues/69">Issue #69</a> by @leix28</li>
+<li>Support recent versions of pandas - <a href="https://github.com/sdv-dev/CTGAN/issues/57">Issue #57</a> by @csala</li>
+<li>Easy solution for restoring original dtypes - <a href="https://github.com/sdv-dev/CTGAN/issues/26">Issue #26</a> by @oregonpillow</li>
+</ul>
+<h3 id="Bugs-fixed-2"><a href="#Bugs-fixed-2" class="headerlink" title="Bugs fixed"></a>Bugs fixed</h3><ul>
+<li>Loss to nan - <a href="https://github.com/sdv-dev/CTGAN/issues/73">Issue #73</a> by @fealho</li>
+<li>Swapped the sklearn utils testing import statement - <a href="https://github.com/sdv-dev/CTGAN/issues/53">Issue #53</a> by @lurosenb</li>
+</ul>
+<h2 id="v0-2-1-2020-01-27"><a href="#v0-2-1-2020-01-27" class="headerlink" title="v0.2.1 - 2020-01-27"></a>v0.2.1 - 2020-01-27</h2><p>Minor version including changes to ensure the logs are properly printed and<br>the option to disable the log transformation to the discrete column frequencies.</p>
+<p>Special thanks to @kevinykuo for the contributions!</p>
+<h3 id="Issues-Resolved"><a href="#Issues-Resolved" class="headerlink" title="Issues Resolved:"></a>Issues Resolved:</h3><ul>
+<li>Option to sample from true data frequency instead of logged frequency - <a href="https://github.com/sdv-dev/CTGAN/issues/16">Issue #16</a> by @kevinykuo</li>
+<li>Flush stdout buffer for epoch updates - <a href="https://github.com/sdv-dev/CTGAN/issues/14">Issue #14</a> by @kevinykuo</li>
+</ul>
+<h2 id="v0-2-0-2019-12-18"><a href="#v0-2-0-2019-12-18" class="headerlink" title="v0.2.0 - 2019-12-18"></a>v0.2.0 - 2019-12-18</h2><p>Reorganization of the project structure with a new Python API, new Command Line Interface<br>and increased data format support.</p>
+<h3 id="Issues-Resolved-1"><a href="#Issues-Resolved-1" class="headerlink" title="Issues Resolved:"></a>Issues Resolved:</h3><ul>
+<li>Reorganize the project structure - <a href="https://github.com/sdv-dev/CTGAN/issues/10">Issue #10</a> by @csala</li>
+<li>Move epochs to the fit method - <a href="https://github.com/sdv-dev/CTGAN/issues/5">Issue #5</a> by @csala</li>
+</ul>
+<h2 id="v0-1-0-2019-11-07"><a href="#v0-1-0-2019-11-07" class="headerlink" title="v0.1.0 - 2019-11-07"></a>v0.1.0 - 2019-11-07</h2><p>First Release - NeurIPS 2019 Version.</p>
