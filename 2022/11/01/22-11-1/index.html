@@ -18,14 +18,14 @@
   
     <meta name="description" content="近期总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="22-10-28">
-<meta property="og:url" content="http://example.com/2022/10/28/22-10-28/index.html">
+<meta property="og:title" content="22-11-1">
+<meta property="og:url" content="http://example.com/2022/11/01/22-11-1/index.html">
 <meta property="og:site_name" content="春夏秋冬">
 <meta property="og:description" content="近期总结">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/22-10-28/index.png">
-<meta property="article:published_time" content="2022-10-28T02:39:11.000Z">
-<meta property="article:modified_time" content="2022-10-28T03:02:17.850Z">
+<meta property="article:published_time" content="2022-11-01T03:14:00.000Z">
+<meta property="article:modified_time" content="2022-11-01T03:27:39.320Z">
 <meta property="article:author" content="陈泓宇">
 <meta property="article:tag" content="日记">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>22-10-28 - 春夏秋冬</title>
+  <title>22-11-1 - 春夏秋冬</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +237,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="22-10-28"></span>
+            <span id="subtitle" data-typed-text="22-11-1"></span>
           
         </div>
 
@@ -248,8 +248,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-28 10:39" pubdate>
-          2022年10月28日 上午
+        <time datetime="2022-11-01 11:14" pubdate>
+          2022年11月1日 上午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.5k 字
+          647 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          13 分钟
+          6 分钟
         
       </span>
     
@@ -311,40 +311,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">22-10-28</h1>
+            <h1 style="display: none">22-11-1</h1>
             
             <div class="markdown-body">
               
-              <h1 id="近期总结"><a href="#近期总结" class="headerlink" title="近期总结"></a>近期总结</h1><h2 id="力扣"><a href="#力扣" class="headerlink" title="力扣"></a>力扣</h2><h3 id="977-有序数组的平方"><a href="#977-有序数组的平方" class="headerlink" title="977.有序数组的平方"></a>977.有序数组的平方</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/">力扣题目链接</a></p>
-<p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
-<p>示例 1： 输入：nums &#x3D; [-4,-1,0,3,10] 输出：[0,1,9,16,100] 解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</p>
-<p>示例 2： 输入：nums &#x3D; [-7,-3,2,3,11] 输出：[4,9,9,49,121]</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>可以使用双指针，一个从头一个从尾遍历这个数组，头尾指针对应位置的值做平方，相互比较，放入<strong>新的长度为nums长度的数组</strong>，可以再定义新数组是我没想到的….</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortedSquares</span>(<span class="hljs-params">self, nums</span>):<br>        length = <span class="hljs-built_in">len</span>(nums)<br>        m, n,k = <span class="hljs-number">0</span>, length - <span class="hljs-number">1</span>, length - <span class="hljs-number">1</span><br>        nums2 = [<span class="hljs-number">0</span>] * length<br>        <span class="hljs-keyword">while</span> m &lt;= n:<br>            <span class="hljs-keyword">if</span> (nums[m] * nums[m] &gt;= nums[n] * nums[n]):<br>                nums2[k] = nums[m] * nums[m]<br>                k = k-<span class="hljs-number">1</span><br>                m += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                nums2[k] = nums[n]*nums[n]<br>                k = k-<span class="hljs-number">1</span><br>                n -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> nums2<br></code></pre></td></tr></table></figure>
+              <h1 id="近期总结"><a href="#近期总结" class="headerlink" title="近期总结"></a>近期总结</h1><h2 id="力扣"><a href="#力扣" class="headerlink" title="力扣"></a>力扣</h2><h3 id="59-螺旋矩阵"><a href="#59-螺旋矩阵" class="headerlink" title="59.螺旋矩阵"></a>59.螺旋矩阵</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/">力扣题目链接(opens new window)</a></p>
+<p>给定一个正整数 n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。</p>
+<p>示例:</p>
+<p>输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这是一个循环控制的问题，重点是每次循环都要保持左闭右开。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">generateMatrix</span>(<span class="hljs-params">self, n</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type n: int</span><br><span class="hljs-string">        :rtype: List[List[int]]</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        loop = n // <span class="hljs-number">2</span><br>        x = <span class="hljs-number">0</span><br>        y = <span class="hljs-number">0</span><br>        L = [[<span class="hljs-number">0</span>] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>        key = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(loop):<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                key += <span class="hljs-number">1</span><br>                y += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                x += <span class="hljs-number">1</span><br>                key += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                y -= <span class="hljs-number">1</span><br>                key += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                x -= <span class="hljs-number">1</span><br>                key += <span class="hljs-number">1</span><br>            x += <span class="hljs-number">1</span><br>            y += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>):<br>            L[n // <span class="hljs-number">2</span>][n // <span class="hljs-number">2</span>] = key<br>        <span class="hljs-keyword">return</span> L<br></code></pre></td></tr></table></figure>
 
-<h3 id="209-长度最小子数组"><a href="#209-长度最小子数组" class="headerlink" title="209.长度最小子数组"></a>209.长度最小子数组</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">力扣题目链接(opens new window)</a></p>
-<p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
-<p>示例：</p>
-<p>输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。</p>
-<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>如果是使用暴力解法，就是两层for循环遍历所有子串，寻找最小值的问题。还可以使用<strong>双指针滑动窗口</strong>来做。简单来说就是<strong>小于加右，大于删左</strong>。</p>
-<ul>
-<li>窗口内是什么？</li>
-<li>如何移动窗口的起始位置？</li>
-<li>如何移动窗口的结束位置？</li>
-</ul>
-<p>窗口就是 满足其和 ≥ target 的长度最小的 连续 子数组。</p>
-<p>窗口的起始位置如何移动：如果当前窗口的值大于target了，窗口就要向前移动了（也就是该缩小了）。</p>
-<p>窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，也就是for循环里的索引。</p>
-<p>可以发现<strong>滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)暴力解法降为O(n)。</strong></p>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">minSubArrayLen</span>(<span class="hljs-params">self, target, nums</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type target: int</span><br><span class="hljs-string">        :type nums: List[int]</span><br><span class="hljs-string">        :rtype: int</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        left = <span class="hljs-number">0</span><br>        <span class="hljs-built_in">sum</span> = <span class="hljs-number">0</span><br>        result = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-built_in">sum</span> += nums[i]<br>            <span class="hljs-keyword">while</span> <span class="hljs-built_in">sum</span> &gt;= target:<br>                result = <span class="hljs-built_in">min</span>(result, i - left + <span class="hljs-number">1</span>)<br>                <span class="hljs-built_in">sum</span> -= nums[left]<br>                left += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> <span class="hljs-keyword">if</span> result == <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>) <span class="hljs-keyword">else</span> result<br></code></pre></td></tr></table></figure>
-
-<h2 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h2><p>唉，要开始写论文了，自己都说服不了自己那该怎么编呢，好烦啊，因为这个事居然失眠了，我的天。</p>
-<ul>
-<li>实验需要和本地模型做对比</li>
-<li>对比不同数据集</li>
-<li>和其他fed方法做对比</li>
-</ul>
-<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>论文呢不知道什么时候论文能写完，刘老师12月8日走，希望可以让我随便投一篇3000块的EI检索放我实习，突然想起来还有那个B灵活就业裂开裂开</p>
+<p>我感觉我的代码比题解写得好</p>
+<h2 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h2><p>跑了本地的DCTGAN在adult数据集上的实验，对比了下。后续换数据集做。</p>
 
               
             </div>
@@ -389,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>22-10-28</div>
-      <div>http://example.com/2022/10/28/22-10-28/</div>
+      <div>22-11-1</div>
+      <div>http://example.com/2022/11/01/22-11-1/</div>
     </div>
     <div class="license-meta">
       
@@ -402,7 +381,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月28日</div>
+          <div>2022年11月1日</div>
         </div>
       
       
@@ -432,18 +411,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/01/22-11-1/" title="22-11-1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">22-11-1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/25/22-10-25/" title="Tue Oct 25 2022 00:00:00 GMT+0800 (中国标准时间)">
-                        <span class="hidden-mobile">Tue Oct 25 2022 00:00:00 GMT+0800 (中国标准时间)</span>
+                      <a href="/2022/10/28/22-10-28/" title="22-10-28">
+                        <span class="hidden-mobile">22-10-28</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>22-11-1</title>
+    <link href="/2022/11/01/22-11-1/"/>
+    <url>/2022/11/01/22-11-1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="近期总结"><a href="#近期总结" class="headerlink" title="近期总结"></a>近期总结</h1><h2 id="力扣"><a href="#力扣" class="headerlink" title="力扣"></a>力扣</h2><h3 id="59-螺旋矩阵"><a href="#59-螺旋矩阵" class="headerlink" title="59.螺旋矩阵"></a>59.螺旋矩阵</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><a href="https://leetcode.cn/problems/spiral-matrix-ii/">力扣题目链接(opens new window)</a></p><p>给定一个正整数 n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。</p><p>示例:</p><p>输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这是一个循环控制的问题，重点是每次循环都要保持左闭右开。</p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">generateMatrix</span>(<span class="hljs-params">self, n</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type n: int</span><br><span class="hljs-string">        :rtype: List[List[int]]</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        loop = n // <span class="hljs-number">2</span><br>        x = <span class="hljs-number">0</span><br>        y = <span class="hljs-number">0</span><br>        L = [[<span class="hljs-number">0</span>] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>        key = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(loop):<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                key += <span class="hljs-number">1</span><br>                y += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                x += <span class="hljs-number">1</span><br>                key += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                y -= <span class="hljs-number">1</span><br>                key += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">2</span> * j - <span class="hljs-number">1</span>):<br>                L[x][y] = key<br>                x -= <span class="hljs-number">1</span><br>                key += <span class="hljs-number">1</span><br>            x += <span class="hljs-number">1</span><br>            y += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>):<br>            L[n // <span class="hljs-number">2</span>][n // <span class="hljs-number">2</span>] = key<br>        <span class="hljs-keyword">return</span> L<br></code></pre></td></tr></table></figure><p>我感觉我的代码比题解写得好</p><h2 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h2><p>跑了本地的DCTGAN在adult数据集上的实验，对比了下。后续换数据集做。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>日记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>日记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>22-10-28</title>
     <link href="/2022/10/28/22-10-28/"/>
     <url>/2022/10/28/22-10-28/</url>
